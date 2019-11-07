@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% block meta %}{% endblock %}
+    <title>Habit Tracker -{% block title %}Home{% endblock %}</title>
+</head>
+<body>
+    {% if not user.is_authenticated %}
+        <header>
+            <nav>
+                <ul>
+                    <h1>Welcome, Guest!</h1>
+                    <h3>Time to get your life together!  Let's track some habits!</h3>
+                    <a href="{% url 'home_page' %}">Home</a>
+                    <a href="{% url 'auth_login' %}">Login</a>
+                </ul>
+            </nav>
+        </header>
+    {% else %}
+        <header>
+            <nav>
+                <ul>
+                    <h1>Welcome {{ request.user }}! </h1>
+                        <div>
+                            <a href="{% url 'home_page' %}">Home</a>
+                            <a href="{% url 'profile_page' pk=request.user.pk %}">Profile</a>
+                            <a href="{% url 'auth_logout' %}">Logout</a>
+                        </div>
+                </ul>
+            </nav>
+        </header>
+    {% endif %}
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
