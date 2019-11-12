@@ -1,0 +1,26 @@
+{% extends "base.html" %} 
+{% block content %}
+
+<form method='POST'>
+    {% csrf_token %} 
+    {{ form.as_p }}
+    <input type="submit" value="submit">
+</form>
+
+<div>
+{% for habit in user_habits %}
+    <a href="{% url 'habit_records' habit.pk %}">{{habit.name}}</a>
+    <p>{{habit.goal}}</p>
+    <p>{{habit.description}}</p>
+    <p>{{habit.start_date}}</p>
+    {% for observer in habit.observer.all %}
+        <p>{{observer.username}}</p>
+    {% endfor %}
+{% endfor %}
+</div>
+
+
+{% endblock %}
+
+    
+    

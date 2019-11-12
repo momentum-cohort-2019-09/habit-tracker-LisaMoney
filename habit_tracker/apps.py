@@ -1,3 +1,5 @@
+# {% load static %}
+
 from django.apps import AppConfig
 
 

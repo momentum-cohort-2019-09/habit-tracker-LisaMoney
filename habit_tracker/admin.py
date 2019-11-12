@@ -1,3 +1,5 @@
+# {% load static %}
+
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from habit_tracker.models import User, Habit, History

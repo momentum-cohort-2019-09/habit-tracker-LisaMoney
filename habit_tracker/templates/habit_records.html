@@ -1,0 +1,22 @@
+{% extends "base.html" %} 
+<!-- {% load static %} -->
+
+{% block content %}
+    <div>
+    <form method='POST'>
+        {% csrf_token %} 
+        {{ form.as_p }}
+        <input type="submit" value="submit">
+    </form>
+    </div>
+
+    <div>
+    {% for record in records %}
+        {{ record.daily_input }}
+        {{ record.met_goal }}
+        {{ record.date }}
+    {% endfor %}
+    </div>
+{% endblock %}
+
+</html>
